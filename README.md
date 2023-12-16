@@ -1,2 +1,1 @@
 # business-card
-react-native
