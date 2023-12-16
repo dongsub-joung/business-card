@@ -53,11 +53,17 @@ class _MyHomePageState extends State<MyHomePage> {
               'Plz! Buy Some Coffeeee for him!',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontSize: 23,
               ),
             ),
         Center(
           child: Image.asset('assets/images/main.jpeg'),
+        ),
+        Center(
+          child: Text('Rusty & DevSecOps', style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),),
         ),
           ],
         ),
