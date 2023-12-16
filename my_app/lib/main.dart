@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:js' as js;
+
 
 void main() {
   runApp(const MyApp());
@@ -6,7 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,10 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void popUpCoffee() {
-    setState(() {
-      // Some coffee url
-    });
+  final String homepageURL = 'https://www.buymeacoffee.com/dongsub_joung';
+
+  void popUpCoffee(){
+    final String url= homepageURL;
+    js.context.callMethod('open', [url]);
   }
 
   @override
