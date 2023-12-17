@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:js' as js;
+import 'screen_todo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,21 +57,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 23,
               ),
             ),
-        Center(
-          child: Image.asset('assets/images/main.jpeg'),
-        ),
-        Center(
-          child: Text('Rusty & DevSecOps', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),),
-        ),
+            Center(
+              child: Image.asset('assets/images/main.jpeg'),
+            ),
+            Center(
+              child: Text(
+                'Rusty & DevSecOps',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
           ],
         ),
       ),
+      persistentFooterButtons: <Widget>[
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ScreenTodo()),
+            );
+          },
+          child: Text('Todo List'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // Implement functionality for the second button
+            // For example, perform a different action, show a dialog, etc.
+          },
+          child: Text('Memo'),
+        ),
+      ],
       floatingActionButton: FloatingActionButton(
         onPressed: popUpCoffee,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.coffee),
       ),
     );
   }
