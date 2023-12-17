@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:js' as js;
 import 'screen_todo.dart';
+import 'screen_memo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -84,8 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         ElevatedButton(
           onPressed: () {
-            // Implement functionality for the second button
-            // For example, perform a different action, show a dialog, etc.
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ScreenMemo()),
+            );
           },
           child: Text('Memo'),
         ),
