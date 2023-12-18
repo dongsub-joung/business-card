@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:js' as js;
 import 'screen_todo.dart';
 import 'screen_memo.dart';
+import 'screen_comment.dart';
 
 void main() {
   runApp(const MyApp());
@@ -91,6 +92,15 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           },
           child: Text('Memo'),
+        ),
+         ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ScreenComment()),
+            );
+          },
+          child: Text('Comment'),
         ),
       ],
       floatingActionButton: FloatingActionButton(
