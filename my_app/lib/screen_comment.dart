@@ -1,4 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'dart:convert';
 
 class ScreenComment extends StatefulWidget {
   @override
@@ -6,11 +11,24 @@ class ScreenComment extends StatefulWidget {
 }
 
 class _ScreenCommentState extends State<ScreenComment> {
-  final List<String> listing = [
-    'Build My website(nginx + Front)',
-    'Write the todo code(diesel + postgresql)',
-    'cargo publish todo app'
-  ];
+  Future<dynamic> fetchComments() async {
+    var uri = Uri.https('myapp-api.ngrok.dev', '/comment/all');
+
+    var headers = {
+      "Access-Control-Allow-Origin": "*", // Sample header, modify as needed
+      'Content-Type': 'application/json',
+      'Accept': '*/*'
+    };
+
+    var response = await http.get(uri, headers: headers);
+
+    if (response.statusCode == 200) {
+      var pdfText = json.decode(response.body); // Parsing JSON response
+      return pdfText;
+    } else {
+      throw Exception('Failed to load data: ${response.statusCode}');
+    }
+  }
 
   final TextEditingController _commentController = TextEditingController();
 
@@ -22,6 +40,8 @@ class _ScreenCommentState extends State<ScreenComment> {
 
   @override
   Widget build(BuildContext context) {
+    var json_data = fetchComments();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Comment'),
@@ -33,9 +53,8 @@ class _ScreenCommentState extends State<ScreenComment> {
               slivers: [
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index) =>
-                        ListTile(title: Text('${listing[index]}')),
-                    childCount: listing.length,
+                    (context, index) => ListTile(
+                        title: Text('${index}: ${json_data.toString()}')),
                   ),
                 ),
               ],
@@ -67,10 +86,19 @@ class _ScreenCommentState extends State<ScreenComment> {
           SizedBox(width: 8.0),
           IconButton(
             icon: Icon(Icons.send),
-            onPressed: () {
+            onPressed: () async {
               String enteredText = _commentController.text;
-              // Use enteredText where needed, e.g., send to a database, display, etc.
-              print('Entered text: $enteredText');
+              var url = Uri.https('https://myapp-api.ngrok.dev', 'comment/add');
+              var data = {'body': '${enteredText}'};
+              var body = json.encode(data); // Encode the data to JSON
+
+              var response = await http.post(
+                url,
+                headers: {
+                  'Content-Type': 'application/json'
+                }, // Set the headers
+                body: body, // Set the encoded JSON data as the request body
+              );
 
               // Clear the TextField after retrieving the text
               _commentController.clear();
