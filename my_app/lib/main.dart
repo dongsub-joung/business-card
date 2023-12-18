@@ -3,6 +3,7 @@ import 'dart:js' as js;
 import 'screen_todo.dart';
 import 'screen_memo.dart';
 import 'screen_comment.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,15 +63,28 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: Image.asset('assets/images/main.jpeg'),
             ),
-            Center(
-              child: Text(
-                'Rusty & DevSecOps',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+            GestureDetector(
+  onTap: () {
+    // Add your navigation or link handling logic here
+    // For example, you can navigate to another screen using Navigator
+    // Navigator.push(context, MaterialPageRoute(builder: (context) => YourNextScreen()));
+    
+    // Or you can open a URL using launch from the url_launcher package
+    // Make sure to add url_launcher to your pubspec.yaml file
+    // Example:
+    launch('https://dongsub.ngrok.io');
+  },
+  child: Center(
+    child: Text(
+      'Rusty & DevSecOps',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+        decoration: TextDecoration.underline, // Add underline for better visual indication of the link
+      ),
+    ),
+  ),
+)
           ],
         ),
       ),
