@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class ScreenTodo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final List<int> listing = <int>[1, 2, 3, 4, 5];
+    final List<String> listing = <String>[
+      'Build My website(nginx + Front)'
+      , 'Write the todo code(diesel + postgresql)'
+      , 'cargo publish todo app'
+    ];
+
+    final len= listing.length;
     return Scaffold(
       appBar: AppBar(
         title: Text('TODO LIST'),
@@ -12,15 +18,11 @@ class ScreenTodo extends StatelessWidget {
         slivers: [
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => ListTile(title: Text('Item #$index')),
-              childCount: 1000,
+              (context, index) => ListTile(title: Text('${listing[index]}')),
+              childCount: len,
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
       ),
     );
   }
