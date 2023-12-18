@@ -1,9 +1,10 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import 'dart:convert';
+
+
+dynamic json_data= "";
 
 class ScreenComment extends StatefulWidget {
   @override
@@ -40,8 +41,6 @@ class _ScreenCommentState extends State<ScreenComment> {
 
   @override
   Widget build(BuildContext context) {
-    var json_data = fetchComments();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Comment'),
@@ -88,7 +87,7 @@ class _ScreenCommentState extends State<ScreenComment> {
             icon: Icon(Icons.send),
             onPressed: () async {
               String enteredText = _commentController.text;
-              var url = Uri.https('https://myapp-api.ngrok.dev', 'comment/add');
+              var url = Uri.https('myapp-api.ngrok.dev', 'comment/add');
               var data = {'body': '${enteredText}'};
               var body = json.encode(data); // Encode the data to JSON
 
@@ -100,6 +99,7 @@ class _ScreenCommentState extends State<ScreenComment> {
                 body: body, // Set the encoded JSON data as the request body
               );
 
+              json_data= await fetchComments();
               // Clear the TextField after retrieving the text
               _commentController.clear();
             },
