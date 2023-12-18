@@ -41,6 +41,7 @@ class _ScreenCommentState extends State<ScreenComment> {
 
   @override
   Widget build(BuildContext context) {
+    json_data= ["In web ClientException: XMLHttpRequest error"];
     return Scaffold(
       appBar: AppBar(
         title: Text('Comment'),
@@ -54,6 +55,7 @@ class _ScreenCommentState extends State<ScreenComment> {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) => ListTile(
                         title: Text('${index}: ${json_data.toString()}')),
+                        childCount: 20
                   ),
                 ),
               ],
