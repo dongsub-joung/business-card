@@ -94,7 +94,7 @@ GestureDetector(
     // Or you can open a URL using launch from the url_launcher package
     // Make sure to add url_launcher to your pubspec.yaml file
     // Example:
-    launch('https://dongsubphto.ngrok.app/imgage_viewer/');
+    launch('https://sparta001.github.io/');
   },
   child: Center(
     child: Text(
