@@ -8,6 +8,8 @@ class ScreenMemo extends StatelessWidget {
       , 'rust diesel'
       , 'rust Actix Web '
       , 'k8s'
+      , 'WASM'
+      , 'Spring'
     ];
 
     final len= listing.length;

@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // Or you can open a URL using launch from the url_launcher package
     // Make sure to add url_launcher to your pubspec.yaml file
     // Example:
-    launch('https://dongsub.ngrok.io');
+    launch('https://dongsub-joung.github.io/');
   },
   child: Center(
     child: Text(
@@ -84,7 +84,30 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ),
   ),
+),
+GestureDetector(
+  onTap: () {
+    // Add your navigation or link handling logic here
+    // For example, you can navigate to another screen using Navigator
+    // Navigator.push(context, MaterialPageRoute(builder: (context) => YourNextScreen()));
+    
+    // Or you can open a URL using launch from the url_launcher package
+    // Make sure to add url_launcher to your pubspec.yaml file
+    // Example:
+    launch('https://dongsubphto.ngrok.app/imgage_viewer/');
+  },
+  child: Center(
+    child: Text(
+      'WASM',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+        decoration: TextDecoration.underline, // Add underline for better visual indication of the link
+      ),
+    ),
+  ),
 )
+
           ],
         ),
       ),

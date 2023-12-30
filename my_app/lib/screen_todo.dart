@@ -4,7 +4,8 @@ class ScreenTodo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> listing = <String>[
-      'Build My website(nginx + Front)'
+      'Spring project in login'
+      , 'Image loader in WASM'
       , 'Write the todo code(diesel + postgresql)'
       , 'cargo publish todo app'
     ];
